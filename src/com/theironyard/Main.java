@@ -47,10 +47,18 @@ public class Main {
         HashSet<Card.Suit> suits = hand.stream()
                 .map(card -> { //for each item in there pull out the suit and return it
                     return card.suit;
-
                 })
                 .collect(Collectors.toCollection(HashSet::new)); //from that stream, turn it into a hashset
         return suits.size() == 1; //this will determine if it's a flush.
+    }
+
+    static boolean isFourOfAKind(HashSet<Card> hand) {
+        HashSet<Card.Rank> ranks = hand.stream()
+                .map(card -> {
+                    return card.rank;
+                })
+                .collect(Collectors.toCollection(HashSet::new));
+        return ranks.size() == 1;
     }
 
     public static void main(String[] args) {
